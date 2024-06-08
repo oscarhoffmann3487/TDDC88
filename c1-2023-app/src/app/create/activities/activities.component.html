@@ -1,0 +1,37 @@
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<div class="activity-content" [ngStyle]="{ 'border-left': (priority === 'h' ? '30px solid #0071D9' : '30px solid #E5CF00') }" [ngClass]="{'if-finished': finished}">
+    <div class="header-container">
+        <div class="header-title">
+            <p class="title">
+                {{ title }}
+            </p>
+            <p class="prio-text">
+                {{getPrio()}}
+            </p>
+        </div>
+        <div class="close-activity" (click)=deleteActivity()>
+            <img src="../../assets/create/exitCross.png" alt="stäng rutan">
+        </div>
+    </div>
+    <div class="bottom-content">
+        <p class="description">
+            {{ description }}
+        </p>
+    </div>
+    <div class="bottom-items">
+        <div *ngIf="canEdit" class="edit" (click)="editActivity()" [ngClass]="{'if-finished-edit': finished}">
+            Redigera
+            <svg  class="icon"  xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 5 12" fill="none">
+                <path d="M9 0L7.5 1.5L10.5 4.5L12 3L9 0ZM6 3L0 9V12H3L9 6L6 3Z" fill="black"/>
+            </svg> 
+        </div>
+        <div class="finished">
+            Markera som avklarad
+        </div>
+        <div class="checkbox"(click)="changeStatus()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" [ngClass]="{'fill-box': finished}">
+                <path d="M2.87389 0L0 2.87389L1.46752 4.3414L5.09554 8.03057L1.46752 11.6586L0 13.065L2.87389 16L4.3414 14.5325L8.03057 10.8433L11.6586 14.5325L13.065 16L16 13.065L14.5325 11.6586L10.8433 8.03057L14.5325 4.3414L16 2.87389L13.065 0L11.6586 1.46752L8.03057 5.09554L4.3414 1.46752L2.87389 0Z"/>
+            </svg>
+        </div>
+    </div>
+</div>

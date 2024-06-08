@@ -1,0 +1,33 @@
+<div class="notification-box">
+    <div class="header">
+        <h2>Notiser</h2>
+        <img class="exit-cross" src="../../assets/create/exitCross.png" (click)="closeNotifications()">
+    </div>
+    <div *ngFor="let item of notifications">
+        <div *ngIf="!item.read">
+            <div class="notification">
+                <img class="image" src="../../assets/navbar/notis.png">
+                <div>
+                    <p class="notis" [innerHTML]="item.notification_content"></p>
+                    <p class="date"> {{ item.date }} </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="separator">
+        <span class="line"></span>
+        <span class="text">Tidigare</span>
+        <span class="line"></span>
+      </div>
+    <div *ngFor="let item of notifications">
+        <div *ngIf="item.read">
+            <div class="notification">
+                <img class="image" src="../../assets/navbar/notis.png">
+                <div>
+                    <p class="notis" [innerHTML]="item.notification_content"></p>
+                    <p class="date"> {{ item.date }} </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,869 @@
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<div style="background-color: white;" class="container">
+    <h3 *ngIf="editingIw == false" class="header">Nytt förändringsarbete</h3>
+    <h3 *ngIf="editingIw == true" class="header">Ändra förändringsarbete</h3>
+    <div class="column-left">
+        <div>
+
+            <div class="inline-elements">
+                <h3 class="input-title">Titel</h3>
+            </div>
+
+            <div class="text-input-title">
+                <textarea class="title-box" [(ngModel)]="title" placeholder="Skriv din titel här..."
+                    [ngClass]="{'red-border': highlight_compulsory_fields}"> </textarea>
+            </div>
+
+            <div class="inline-elements" id="divinputheader">
+                <h3 class="titledescription"> Beskrivning </h3>
+                <div class="image-container">
+                    <p class="question-mark"></p>
+                    <div class="popup-text">Ge en kort, övergripande beskrivning över förändringsarbetet som är tänkt
+                        att genomföras.</div>
+                </div>
+            </div>
+            <div class="text-input-description">
+                <textarea class="box" [(ngModel)]="description" placeholder="Skriv din text här..."
+                    [ngClass]="{'red-border': highlight_compulsory_fields}"></textarea>
+            </div>
+
+            <div>
+                <div class="inline-elements">
+                    <h3 class="pgsa-title">Aktuell PGSA-fas</h3>
+                    <div class="image-container">
+                        <p class="question-mark"></p>
+                        <div class="popup-text">Välj den fas som förändringsarbetet befinner sig i.</div>
+                    </div>
+                </div>
+                <div class="inline-elements" class="pgsa">
+                    <button class="plan-button" (click)="changestatus('plan')"
+                        [style.background-color]="planPhaseBackgroundColor" [style.color]="planPhaseTextColor">
+                        Planera
+                    </button>
+                    <button class="do-button" (click)="changestatus('do')"
+                        [style.background-color]="doAtivePhaseBackgroundColor" [style.color]="doActivePhaseTextColor">
+                        Gör
+                    </button>
+                    <button class="study-button" (click)="changestatus('study')"
+                        [style.background-color]="studyPhaseBackgroundColor" [style.color]="studyPhaseTextColor">
+                        Studera
+                    </button>
+                    <button class="act-button" (click)="changestatus('act')"
+                        [style.background-color]="actAtivePhaseBackgroundColor" [style.color]="actActivePhaseTextColor">
+                        Agera
+                    </button>
+                </div>
+                <div class="pgsa-line">
+                    <img class="progessLine" [src]="progress">
+                </div>
+            </div>
+
+            <!-- Tab links -->
+            <div>
+                <div class="tabs">
+                    <button class="planTab" (click)="openTab($event, 'Plan')"
+                        [class.underline]="display_status === 'Plan'" id="defaultOpen">Planera</button>
+                    <button class="doTab" (click)="openTab($event, 'Do')"
+                        [class.underline]="display_status === 'Do'">Gör</button>
+                    <button class="studyTab" (click)="openTab($event, 'Study')"
+                        [class.underline]="display_status === 'Study'">Studera</button>
+                    <button class="actTab" (click)="openTab($event, 'Act')"
+                        [class.underline]="display_status === 'Act'">Agera</button>
+                </div>
+
+                <!-- Tab content -->
+                <div id="Plan" class="tabcontent my-tabcontent">
+                    <p class="phase-text">I planeringsfasen tar ni fram en plan för genomförandet utifrån de mål, mått och idéer som ni har identifierat. Ni planerar vad som ska göras, hur det ska göras samt när och vem som ska genomföra det. Här planerar ni även hur förändringen ska följas upp och mätas.</p>
+                    <div class="phase-question-answer">
+                        <p class="phase-text-question">Vilka metoder hjälper oss att planera?</p>
+                        <p class="phase-text-answer">Handlingsplan, kommunikationsplan.</p>
+                    </div>
+                    <p class="phase-question-answer">&bull;Använd &nbsp;<strong>samarbetsytan</strong>&nbsp; för att spara den data som samlas in från fasen.</p>
+
+                    <h3 class="title"> Mål och syfte </h3>
+                    <div class="inline-elements" id="divinputheader">
+                        <h2 class="question">Vad är det aktuella problemet?</h2>
+                        <div class="image-container">
+                            <p class="question-mark"></p>
+                            <div class="popup-text">Beskriv hur nuläget ser ut. Vilka förändringsbehov finns?
+                                <br><br>
+                                Tips på metoder för att förstå behov och kartlägga nuläget:<br>
+                                - 5W&2H<br>
+                                - 6 P<br>
+                                - Fiskbensdiagram<br>
+                                - Enkät<br>
+                                - Intervjuer<br>
+                                - Rotorsaksanalys
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="text-input">
+                        <textarea class="box" [(ngModel)]="problem" placeholder="Skriv din text här..."
+                            [ngClass]="{'red-border': highlight_compulsory_fields}"></textarea>
+                    </div>
+
+                    <div class="inline-elements" id="divinputheader">
+                        <h2 class="question">Vad är målet med förändringarbetet?</h2>
+                        <div class="image-container">
+                            <p class="question-mark"></p>
+                            <div class="popup-text">Vad vill ni åstadkomma med förändringsarbetet? Kan målet delas upp i
+                                mindre delmål?
+                                <br><br>
+                                Tips på metoder för att sätta mål: <br>
+                                - SMARTa mål<br>
+                                - Donabedian målformulering
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-input">
+                        <textarea class="box" [(ngModel)]="goal" placeholder="Skriv din text här..."
+                            [ngClass]="{'red-border': highlight_compulsory_fields}"></textarea>
+                    </div>
+
+                    <div class="inline-elements" id="divinputheader">
+                        <h2 class="question">Varför vill ni genomföra förändringarbetet?</h2>
+                        <div class="image-container">
+                            <p class="question-mark"></p>
+                            <div class="popup-text">Varför är det viktigt att hitta en lösning till det aktuella
+                                problemet? Varför bör det här förändringsarbetet genomföras just nu?</div>
+                        </div>
+                    </div>
+                    <div class="text-input">
+                        <textarea class="box" [(ngModel)]="how" placeholder="Skriv din text här..."
+                            [ngClass]="{'red-border': highlight_compulsory_fields}"></textarea>
+                    </div>
+
+                    <h3 class="title"> Idéer</h3>
+
+                    <div class="inline-elements" id="divinputheader">
+                        <h2 class="question">Vilka förändringar kan ni göra som leder till en förbättring?</h2>
+                        <div class="image-container">
+                            <p class="question-mark"></p>
+                            <div class="popup-text">Vilka förändringar hade ni kunnat göra eller testa för att uppnå
+                                målen?
+                                <br><br>
+                                Exempel på frågor att ställa sig:<br>
+                                - Vad säger kunskapsläget, evidensen eller riktlinjer?<br>
+                                - Vad gör de som är bäst på detta?<br>
+                                - Vad säger vår egen verksamhet?<br>
+                                - Vad säger patienter och närstående?<br>
+                                <br>
+                                Tips på metoder för att generera idéer: <br>
+                                - PICK-graf<br>
+                                - Brainstorming<br>
+                                - Släktskapsdiagram
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-input">
+                        <textarea class="box" [(ngModel)]="ideas" placeholder="Skriv din text här..." [ngClass]="{'red-border': highlight_compulsory_fields}"></textarea>
+                    </div>
+
+                    <h3 class="title"> Mått och uppföljning</h3>
+
+                    <div class="inline-elements" id="divinputheader">
+                        <h2 class="question">Hur kan ni avgöra om förändringarna lett till en förbättring?</h2>
+                        <div class="image-container">
+                            <p class="question-mark"></p>
+                            <div class="popup-text">Vad ska ni mäta och hur ska mätandet gå till? Försök hitta något som
+                                kan mätas ofta, helst dagligen eller veckovis.
+                                <br><br>
+                                Tips på metoder som hjälper oss att mäta: <br>
+                                - Värdekompassen - för mått och mätetal i en process<br>
+                                - Styrdiagram
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-input">
+                        <textarea class="box" [(ngModel)]="how_goal" placeholder="Skriv din text här..." [ngClass]="{'red-border': highlight_compulsory_fields}"></textarea>
+                    </div>
+
+                    <h3 class="title"> Planering</h3>
+
+                    <div class="inline-elements" id="divinputheader">
+                        <h2 class="question">Hur ska genomförandet av förändringsarbetet gå till?</h2>
+                        <div class="image-container">
+                            <p class="question-mark"></p>
+                            <div class="popup-text">Beskriv hur förändingsarbetet planeras att gå till. Vilka
+                                förändringar ska genomföras? Vilka ska delta och vad är deras ansvarsområden? Hur ser
+                                tidsplanen ut?</div>
+                        </div>
+                    </div>
+                    <div class="text-input">
+                        <textarea class="box" [(ngModel)]="plan" placeholder="Skriv din text här..."
+                            [ngClass]="{'red-border': highlight_compulsory_fields}"></textarea>
+                    </div>
+
+                    <div class="inline-elements" id="divinputheader">
+                        <h2 class="question">Hur planerar ni att hitta tid för att genomföra förändringsarbetet?</h2>
+                        <div class="image-container">
+                            <p class="question-mark"></p>
+                            <div class="popup-text">Kommer tiden för att genomföra förändringsarbetet tas från det
+                                dagliga arbetet eller någon annanstans ifrån? Vilka konsekvenser kan detta få?</div>
+                        </div>
+                    </div>
+                    <div class="text-input">
+                        <textarea class="box" [(ngModel)]="planned_time" placeholder="Skriv din text här..."
+                            [ngClass]="{'red-border': highlight_compulsory_fields}"></textarea>
+                    </div>
+
+                    <div class="inline-elements" id="divinputheader">
+                        <h2 class="question">Hur planerar ni att följa upp och mäta förändringen?</h2>
+                        <div class="image-container">
+                            <p class="question-mark"></p>
+                            <div class="popup-text">Baserat på de mått som har valts, planera hur förändringen ska
+                                mätas. Vem är ansvarig och hur ska mätandet gå till? Hur ska ni använda måtten för att
+                                avgöra om en förbättring har skett? Finns det några felkällor att vara uppmärksamma för?
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-input">
+                        <textarea class="box" [(ngModel)]="evaluate_changes" placeholder="Skriv din text här..."
+                            [ngClass]="{'red-border': highlight_compulsory_fields}"></textarea>
+                    </div>
+
+
+                    <div class="activity-subtitle">
+                        <h3 class="title">Aktiviteter</h3>
+                        <button class="add-button" (click)="openAddActivity()">
+                            Lägg till +
+                        </button>
+                        <div class="image-container">
+                            <p class="question-mark"></p>
+                            <div class="popup-text">Skapa aktiviteter som ska genomföras i planera-fasen. Ange en titel
+                                och beskriv hur aktiviteten ska genomföras.</div>
+                        </div>
+                    </div>
+                    <div id="add-acttivty-container-plan" class="add-acttivty-container">
+                        <app-activity-add
+                            [title] = "activityTitle"
+                            [description] = "activityDescription"
+                            [displayPrio] = "activityPrioText"
+                            [pdsaTag] = "activityPdsaTag"
+                            [team] = "activityTeam"
+                            (closeActivityOutput) = "closeActivity()"
+                            (saveActivityOutput) = "saveActivity($event)"
+                            >
+                        </app-activity-add>
+                    </div>
+                    <div class="activity-ongoing-finished">
+                        Pågående
+                    </div>
+                    <div *ngFor="let activity of activities; index as i">
+                        <div *ngIf="activity.pdsa_tag ==='P'">
+                            <app-activities 
+                            *ngIf="!activity.finished"
+                            [title]="activity.title" 
+                            [description]="activity.description" 
+                            [priority]="activity.priority_level"
+                            [finished]="activity.finished"
+                            [team]="activity.assignees"
+                            (editActivityOutput)="editActivity(i)"
+                            (deleteActivityOutput)="deleteActivity(i)"
+                            (changeActivityStatusOutput)="changeActivityStatus(i)">
+                            </app-activities>
+                        </div>
+                    </div>
+                    <div class="activity-ongoing-finished">
+                        Avklarade
+                    </div>
+                    <div *ngFor="let activity of activities; index as i">
+                        <div *ngIf="activity.pdsa_tag ==='P'">
+                            <app-activities 
+                            *ngIf="activity.finished"
+                            [title]="activity.title" 
+                            [description]="activity.description" 
+                            [priority]="activity.priority_level"
+                            [finished]="activity.finished"
+                            [team]="activity.assignees"
+                            (editActivityOutput)="editActivity(i)"
+                            (deleteActivityOutput)="deleteActivity(i)"
+                            (changeActivityStatusOutput)="changeActivityStatus(i)">
+                            </app-activities>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="Do" class="tabcontent my-tabcontent">
+                    <p class="phase-text">I denna fas genomför ni förändringen som ni har planerat i föregående fas. Ni samlar fakta
+                        genom synpunkter, iakttagelser och erfarenheter. Här noterar ni även problem och oväntade
+                        händelser samt tar del av erfarenheter från genomförandet. Det är viktigt att se till att de som
+                        är involverade förstår problemet och vilka förbättringar som ska utföras.</p>
+                    <div class="phase-question-answer">
+                        <p class="phase-text-question">Vilka metoder hjälper oss att göra? </p>
+                        <p class="phase-text-answer">Histogram, paretodiagram, styrdiagram, dagbok eller loggbok.</p>
+                    </div>
+                    <p class="phase-question-answer">&bull;Använd &nbsp;<strong>samarbetsytan</strong>&nbsp; för att spara den data som samlas in från fasen.</p>
+                    <div class="activity-subtitle">
+                        <h3 class="title">Aktiviteter</h3>
+                        <button class="add-button" (click)="openAddActivity()">
+                            Lägg till +
+                        </button>
+                        <div class="image-container">
+                            <p class="question-mark"></p>
+                            <div class="popup-text">Skapa aktiviteter som ska genomföras i planera-fasen. Ange en titel
+                                och beskriv hur aktiviteten ska genomföras.</div>
+                        </div>
+                    </div>
+                    <div id="add-acttivty-container-do" class="add-acttivty-container">
+                        <app-activity-add
+                            [title] = "activityTitle"
+                            [description] = "activityDescription"
+                            [displayPrio] = "activityPrioText"
+                            [pdsaTag] = "activityPdsaTag"
+                            [team] = "activityTeam"
+                            (closeActivityOutput) = "closeActivity()"
+                            (saveActivityOutput) = "saveActivity($event)"
+                            >
+                        </app-activity-add>
+                    </div>
+                    <div class="activity-ongoing-finished">
+                        Pågående
+                    </div>
+                    <div *ngFor="let activity of activities; index as i">
+                        <div *ngIf="activity.pdsa_tag ==='D'">
+                            <app-activities 
+                            *ngIf="!activity.finished"
+                            [title]="activity.title" 
+                            [description]="activity.description" 
+                            [priority]="activity.priority_level"
+                            [finished]="activity.finished"
+                            [team]="activity.assignees"
+                            (editActivityOutput)="editActivity(i)"
+                            (deleteActivityOutput)="deleteActivity(i)"
+                            (changeActivityStatusOutput)="changeActivityStatus(i)">
+                            </app-activities>
+                        </div>
+                    </div>
+                    <div class="activity-ongoing-finished">
+                        Avklarade
+                    </div>
+                    <div *ngFor="let activity of activities; index as i">
+                        <div *ngIf="activity.pdsa_tag ==='D'">
+                            <app-activities 
+                            *ngIf="activity.finished"
+                            [title]="activity.title" 
+                            [description]="activity.description" 
+                            [priority]="activity.priority_level"
+                            [finished]="activity.finished"
+                            [team]="activity.assignees"
+                            (editActivityOutput)="editActivity(i)"
+                            (deleteActivityOutput)="deleteActivity(i)"
+                            (changeActivityStatusOutput)="changeActivityStatus(i)">
+                            </app-activities>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="Study" class="tabcontent my-tabcontent">
+                    <p class="phase-text">Efter genomförandet, studerar ni hur det går. Ni analyserar och jämför resultatet med erat mål och erat mätetal. Ni använder olika statistiska metoder för att studera resultatet. När en positiv effekt uppnåtts och kvaliteten förbättrats, behövs fortsatta kontroller för att se till att förbättringarna bibehålls.<br><br>
+
+                        Använd svaren från Planeringsfasen (t.ex.vad ni vill åstadkomma, hur ni vet att en förändring är gjord, vilken förändring blir en förbättring) samt data från Gör fasen.</p>
+                    <div class="phase-question-answer">
+                        <p class="phase-text-question">Vilka metoder hjälper oss att studera?  </p>
+                        <p class="phase-text-answer">Histogram, paretodiagram, styrdiagram, dagbok eller loggbok.</p>
+                    </div>
+                    <p class="phase-question-answer">&bull;Använd &nbsp;<strong>samarbetsytan</strong>&nbsp; för att spara den data som samlas in från fasen.</p>
+
+                    <h3 class="title"> Resultat </h3>
+                    <div class="inline-elements" id="divinputheader">
+                        <h2 class="question">Resulterade arbetet i en förbättring? Med hur mycket eller lite? </h2>
+                    </div>
+                    <div class="text-input">
+                        <textarea class="box" [(ngModel)]="improvment" placeholder="Skriv din text här..."></textarea>
+                    </div>
+
+                    <div class="inline-elements" id="divinputheader">
+                        <h2 class="question">Var arbetet värt investeringen av tid? </h2>
+                    </div>
+                    <div class="text-input">
+                        <textarea class="box" [(ngModel)]="time" placeholder="Skriv din text här..."></textarea>
+                    </div>
+
+                    <div class="inline-elements" id="divinputheader">
+                        <h2 class="question">Ser ni några trender? </h2>
+                    </div>
+                    <div class="text-input">
+                        <textarea class="box" [(ngModel)]="trends" placeholder="Skriv din text här..."></textarea>
+                    </div>
+
+                    <div class="inline-elements" id="divinputheader">
+                        <h2 class="question">Tillkom det oväntade sidoeffekter?  </h2>
+                    </div>
+                    <div class="text-input">
+                        <textarea class="box" [(ngModel)]="effects" placeholder="Skriv din text här..."></textarea>
+                    </div>
+
+                    <div class="activity-subtitle">
+                        <h3 class="title">Aktiviteter</h3>
+                        <button class="add-button" (click)="openAddActivity()">
+                            Lägg till +
+                        </button>
+                        <div class="image-container">
+                            <p class="question-mark"></p>
+                            <div class="popup-text">Skapa aktiviteter som ska genomföras i planera-fasen. Ange en titel
+                                och beskriv hur aktiviteten ska genomföras.</div>
+                        </div>
+                    </div>
+                    <div id="add-acttivty-container-study" class="add-acttivty-container">
+                        <app-activity-add
+                        [title] = "activityTitle"
+                        [description] = "activityDescription"
+                        [displayPrio] = "activityPrioText"
+                        [pdsaTag] = "activityPdsaTag"
+                        [team] = "activityTeam"
+                        (closeActivityOutput) = "closeActivity()"
+                        (saveActivityOutput) = "saveActivity($event)"
+                        >
+                        </app-activity-add>    
+                    </div>
+                    <div class="activity-ongoing-finished">
+                        Pågående
+                    </div>
+                    <div *ngFor="let activity of activities; index as i">
+                        <div *ngIf="activity.pdsa_tag ==='S'">
+                            <app-activities 
+                            *ngIf="!activity.finished"
+                            [title]="activity.title" 
+                            [description]="activity.description" 
+                            [priority]="activity.priority_level"
+                            [finished]="activity.finished"
+                            [team]="activity.assignees"
+                            (editActivityOutput)="editActivity(i)"
+                            (deleteActivityOutput)="deleteActivity(i)"
+                            (changeActivityStatusOutput)="changeActivityStatus(i)">
+                            </app-activities>
+                        </div>
+                    </div>
+                    <div class="activity-ongoing-finished">
+                        Avklarade
+                    </div>
+                    <div *ngFor="let activity of activities; index as i">
+                        <div *ngIf="activity.pdsa_tag ==='S'">
+                            <app-activities 
+                            *ngIf="activity.finished"
+                            [title]="activity.title" 
+                            [description]="activity.description" 
+                            [priority]="activity.priority_level"
+                            [finished]="activity.finished"
+                            [team]="activity.assignees"
+                            (editActivityOutput)="editActivity(i)"
+                            (deleteActivityOutput)="deleteActivity(i)"
+                            (changeActivityStatusOutput)="changeActivityStatus(i)">
+                            </app-activities>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="Act" class="tabcontent my-tabcontent">
+                    <p class="phase-text">I sista fasen tar ni hand om lärdomar från förbättringsarbetet. Ni sammanfattar och
+                        reflekterar över de lärdomar och resultat från förbättringsarbetet. Ni bedömer om förändringen ska förkastas, om något
+                        behöver justeras och prövas ytterligare ett PGSA varv. Om ni nått önskat resultat, hur ska förändringen implementeras 
+                        till en standard i ert arbete? Se också till att sprida denna förändring till andra delar av organisationen men även 
+                        inom er egna enhet för att bidra till det bättre.</p>
+                    <div class="phase-question-answer">
+                        <p class="phase-text-question">Vilka metoder hjälper oss att agera? </p>
+                        <p class="phase-text-answer">Implementering, skala upp.</p>
+                    </div>
+                    <p class="phase-question-answer">&bull;Använd &nbsp;<strong>samarbetsytan</strong>&nbsp; för att spara den data som samlas in från fasen.</p>
+
+                    <h3 class="title"> Reflektion och Lärdomar</h3>
+
+                    <div class="inline-elements" id="divinputheader">
+                        <h2 class="question">Vilka lärdomar kan ni hämta från förändringsarbetet?</h2>
+                        <div class="image-container">
+                            <p class="question-mark"></p>
+                            <div class="popup-text">Har förändringsarbetet uppnått önskat resultat? Varför/varför inte?
+                                Finns det någonting som hade kunnat gjorts annorlunda? Vad kan vi ta med oss till
+                                framtida förbättringsarbeten?</div>
+                        </div>
+                    </div>
+                    <div class="text-input">
+                        <textarea class="box" [(ngModel)]="teachings" placeholder="Skriv din text här..."></textarea>
+                    </div>
+
+                    <div class="inline-elements" id="divinputheader">
+                        <h2 class="question">Var planeringen bra gjord?</h2>
+                    </div>
+                    <div class="text-input">
+                        <textarea class="box" [(ngModel)]="evaluate_plan" placeholder="Skriv din text här..."></textarea>
+                    </div>
+
+                    <div class="inline-elements" id="divinputheader">
+                        <h2 class="question">Kan ni göra förbättringar till planeringsfasen till nästa gång?</h2>
+                    </div>
+                    <div class="text-input">
+                        <textarea class="box" [(ngModel)]="improvment_plan" placeholder="Skriv din text här..."></textarea>
+                    </div>
+
+                    <div class="inline-elements" id="divinputheader">
+                        <h2 class="question">Blev genomförandet bra gjort? Finns det områden som kan förbättras när det kommer till att samla in data? </h2>
+                    </div>
+                    <div class="text-input">
+                        <textarea class="box" [(ngModel)]="evaluate_do" placeholder="Skriv din text här..."></textarea>
+                    </div>
+
+                    <h3 class="title"> Nästa steg </h3>
+
+                    <div class="inline-elements" id="divinputheader">
+                        <h2 class="question">Vad är nästa steg? Bör arbetet avslutas eller genomgå ytterligare ett
+                            PGSA-varv?</h2>
+                        <div class="image-container">
+                            <p class="question-mark"></p>
+                            <div class="popup-text">Bör förändringen förkastas, omarbetes i ett nytt PGSA-varv eller ses
+                                som färdig?</div>
+                        </div>
+                    </div>
+                    <div class="text-input">
+                        <textarea class="box" [(ngModel)]="next_step" placeholder="Skriv din text här..."></textarea>
+                    </div>
+
+                    <div class="inline-elements" id="divinputheader">
+                        <h2 class="question">Hur bör förändringen spridas inom eller utanför enheten?</h2>
+                        <div class="image-container">
+                            <p class="question-mark"></p>
+                            <div class="popup-text">Bör förändringen implementeras någon annanstans inom eller utanför
+                                enheten? Vilka bör ta del av lärdomarna från förändringsarbetet?</div>
+                        </div>
+                    </div>
+                    <div class="text-input">
+                        <textarea class="box" [(ngModel)]="spreading" placeholder="Skriv din text här..."></textarea>
+                    </div>
+
+                    <div class="inline-elements" id="divinputheader">
+                        <h2 class="question">Hur ska ni se till att era framgångar med detta förbättringsarbete bibehålls och förs vidare?</h2>
+                    </div>
+                    <div class="text-input">
+                        <textarea class="box" [(ngModel)]="maintain" placeholder="Skriv din text här..."></textarea>
+                    </div>
+
+                    <div class="inline-elements" id="divinputheader">
+                        <h2 class="question">Hur kan ni planera in långsiktiga planer till nya framtida förbättringar kopplat till detta förbättringsarbete?</h2>
+                    </div>
+                    <div class="text-input">
+                        <textarea class="box" [(ngModel)]="future" placeholder="Skriv din text här..."></textarea>
+                    </div>
+
+                    <div class="activity-subtitle">
+                        <h3 class="title">Aktiviteter</h3>
+                        <button class="add-button" (click)="openAddActivity()">
+                            Lägg till +
+                        </button>
+                        <div class="image-container">
+                            <p class="question-mark"></p>
+                            <div class="popup-text">Skapa aktiviteter som ska genomföras i planera-fasen. Ange en titel
+                                och beskriv hur aktiviteten ska genomföras.</div>
+                        </div>
+                    </div>
+                    <div id="add-acttivty-container-act" class="add-acttivty-container">
+                        <app-activity-add
+                        [title] = "activityTitle"
+                        [description] = "activityDescription"
+                        [displayPrio] = "activityPrioText"
+                        [pdsaTag] = "activityPdsaTag"
+                        [team] = "activityTeam"
+                        (closeActivityOutput) = "closeActivity()"
+                        (saveActivityOutput) = "saveActivity($event)"
+                        >
+                        </app-activity-add> 
+                    </div>
+                    <div class="activity-ongoing-finished">
+                        Pågående
+                    </div>
+                    <div *ngFor="let activity of activities; index as i">
+                        <div *ngIf="activity.pdsa_tag ==='A'">
+                            <app-activities 
+                            *ngIf="!activity.finished"
+                            [title]="activity.title" 
+                            [description]="activity.description" 
+                            [priority]="activity.priority_level"
+                            [finished]="activity.finished"
+                            [team]="activity.assignees"
+                            (editActivityOutput)="editActivity(i)"
+                            (deleteActivityOutput)="deleteActivity(i)"
+                            (changeActivityStatusOutput)="changeActivityStatus(i)">
+                            </app-activities>
+                        </div>
+                    </div>
+                    <div class="activity-ongoing-finished">
+                        Avklarade
+                    </div>
+                    <div *ngFor="let activity of activities; index as i">
+                        <div *ngIf="activity.pdsa_tag ==='A'">
+                            <app-activities 
+                            *ngIf="activity.finished"
+                            [title]="activity.title" 
+                            [description]="activity.description" 
+                            [priority]="activity.priority_level"
+                            [finished]="activity.finished"
+                            [team]="activity.assignees"
+                            (editActivityOutput)="editActivity(i)"
+                            (deleteActivityOutput)="deleteActivity(i)"
+                            (changeActivityStatusOutput)="changeActivityStatus(i)">
+                            </app-activities>
+                        </div>
+                    </div>
+                </div>                
+        <div *ngIf="editingIw == false" class="save-publish-buttons">
+            <div class="save" (click)="showConfirmationSave()">Spara</div>
+            <div class="publish" (click)="showConfirmationPublish()">Publicera</div>
+            <div id="bottom-fade"></div>
+        </div>
+        <div *ngIf="editingIw == true" class="save-publish-buttons">
+            <div class="publish-edit" (click)="showConfirmationPublish()">Publicera ändringar</div>
+            <div class="arkivera" (click)="showConfirmationArchive()">Arkivera</div>
+            <div id="bottom-fade"></div>
+        </div>
+        <app-confirmation-dialog *ngIf="showConfirmationDialogPublish && !editingIw"
+                        [showConfirmationDialog]="showConfirmationDialogPublish" [confirmationText]="confirmationTextPublish"
+                        (confirmEvent)="confirmPostPublish()" (cancelEvent)="cancelPost()">
+        </app-confirmation-dialog>
+
+        <app-confirmation-dialog *ngIf="showConfirmationDialogSave && !editingIw"
+                        [showConfirmationDialog]="showConfirmationDialogSave" [confirmationText]="confirmationTextSave"
+                        (confirmEvent)="confirmPostSave()" (cancelEvent)="cancelPost()">
+        </app-confirmation-dialog>
+
+        <app-confirmation-dialog *ngIf="showConfirmationDialogPublish && editingIw"
+                        [showConfirmationDialog]="showConfirmationDialogPublish" [confirmationText]="confirmationTextPublish"
+                        (confirmEvent)="confirmPostSaveChanges()" (cancelEvent)="cancelPost()">
+        </app-confirmation-dialog>
+        <div *ngIf="this.showArchiveContainer == true" class="archive-container">
+            <div class="archive-top">
+                Är du säker på att du vill arkivera arbetet?
+                <svg class="archive-x" (click)="showConfirmationArchive()" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M5.00657 1.41421C4.22552 0.633165 2.95919 0.633165 2.17814 1.41421L1.41421 2.17814C0.633166 2.95919 0.633165 4.22552 1.41421 5.00657L1.8344 5.42675L4.97875 8.6241C5.74867 9.407 5.74342 10.6642 4.96698 11.4407L1.8344 14.5732L1.45958 14.9324C0.656026 15.7025 0.635706 16.9804 1.41437 17.7757L2.1783 18.5559C2.95684 19.351 4.23467 19.3577 5.02153 18.5708L5.42675 18.1656L8.61213 14.9802C9.3978 14.1946 10.6733 14.1999 11.4523 14.9921L14.5732 18.1656L14.9176 18.525C15.6934 19.3345 16.983 19.3482 17.7758 18.5554L18.5554 17.7758C19.3482 16.983 19.3345 15.6934 18.525 14.9176L18.1656 14.5732L14.9921 11.4523C14.1999 10.6733 14.1946 9.3978 14.9802 8.61214L18.1656 5.42675L18.5708 5.02154C19.3577 4.23467 19.351 2.95684 18.5559 2.1783L17.7757 1.41437C16.9804 0.635706 15.7025 0.656026 14.9324 1.45958L14.5732 1.8344L11.4407 4.96698C10.6642 5.74342 9.407 5.74867 8.6241 4.97875L5.42675 1.8344L5.00657 1.41421Z" fill="black"/>
+                </svg>
+            </div>
+            <div class="archive-subtitle">
+                Orsak till arkivering
+                <div class="image-container">
+                    <p class="question-mark"></p>
+                    <div class="popup-text-sidebar">Förklara varför förändringsarbetet arkiveras.
+                        <p class="archive-info">Exempel på frågor att diskutera:</p>
+                        <p>
+                            <li>Är förändringsarbetet färdigt eller ska förändringen förkastas?</li>
+                            <li>Vilka slutsatser har dragits?</li>
+                            <li>Vilka lärdomar kan man hämta från förändringsarbetet?</li>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-input-archive">
+                <textarea class="box" [(ngModel)]="archive" placeholder="Skriv din text här..."></textarea>
+            </div>
+            <div class="archive-buttons"> 
+                <div class="archive-cancel" (click)="showConfirmationArchive()">Avbryt</div>
+                <div class="arkivera" (click)="archiveIW()">Arkivera</div>
+            </div>
+        </div>
+        <div *ngIf="showHelpContainer" class="compulsory-help-container">
+            <div class="items-helpbox">
+                <img class="exclamation-mark" src="../../assets/create_iw/exclamation_mark.png">
+                <p class="text-help-container">Du har inte fyllt i alla obligatoriska delar som krävs för att publicera
+                    förändringsarbetet. Vänligen fyll i:</p>
+                <svg class="exit-button" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                    fill="none" (click)="closePublishHelpContainer()">
+                    <path
+                        d="M5.00657 1.41421C4.22552 0.633165 2.95919 0.633165 2.17814 1.41421L1.41421 2.17814C0.633166 2.95919 0.633165 4.22552 1.41421 5.00657L1.8344 5.42675L4.97875 8.6241C5.74867 9.407 5.74342 10.6642 4.96698 11.4407L1.8344 14.5732L1.45958 14.9324C0.656026 15.7025 0.635706 16.9804 1.41437 17.7757L2.1783 18.5559C2.95684 19.351 4.23467 19.3577 5.02153 18.5708L5.42675 18.1656L8.61213 14.9802C9.3978 14.1946 10.6733 14.1999 11.4523 14.9921L14.5732 18.1656L14.9176 18.525C15.6934 19.3345 16.983 19.3482 17.7758 18.5554L18.5554 17.7758C19.3482 16.983 19.3345 15.6934 18.525 14.9176L18.1656 14.5732L14.9921 11.4523C14.1999 10.6733 14.1946 9.3978 14.9802 8.61214L18.1656 5.42675L18.5708 5.02154C19.3577 4.23467 19.351 2.95684 18.5559 2.1783L17.7757 1.41437C16.9804 0.635706 15.7025 0.656026 14.9324 1.45958L14.5732 1.8344L11.4407 4.96698C10.6642 5.74342 9.407 5.74867 8.6241 4.97875L5.42675 1.8344L5.00657 1.41421Z"
+                        fill="black" />
+                </svg>
+            </div>
+            <p class="list">
+                <li>Titel</li>
+                <li>Beskrivning</li>
+                <li>Mål och syfte</li>
+                <li>Idéer</li>
+                <li>Mått och uppföljning</li>
+                <li>Planering</li>
+            </p>
+        </div>
+        </div>
+    </div>
+    </div>
+
+
+    <div class="separator"></div>
+    <div class="column-right">
+        <label class="checkBox-container">Titel
+            <input type="checkbox" [(ngModel)]="title" [checked]="title !== ''" disabled>
+            <span class="checkmark"></span>
+        </label>
+
+        <label class="checkBox-container">Beskrivning
+            <input type="checkbox" [(ngModel)]="description" [checked]="description !== ''" disabled>
+            <span class="checkmark"></span>
+        </label>
+
+        <label class="checkBox-container">Planera
+            <input type="checkbox"
+                [(ngModel)]="problem && goal && how && ideas && how_goal && plan && planned_time && evaluate_changes"
+                [checked]="problem !== ''&& goal !== '' && how !== '' && ideas !== '' && how_goal !== '' && 
+            plan !== ''&& planned_time !== '' && evaluate_changes !== '' && plan !== ''&& planned_time !== '' && evaluate_changes !== ''"
+                disabled>
+            <span class="checkmark"></span>
+        </label>
+
+        <label class="subCheckBox-container">Mål och syfte
+            <input type="checkbox" [(ngModel)]="problem && goal && how"
+                [checked]="problem !== ''&& goal !== '' && how !== ''" disabled>
+            <span class="checkmark"></span>
+        </label>
+
+        <label class="subCheckBox-container">Idéer
+            <input type="checkbox" [(ngModel)]="ideas" [checked]="ideas !== ''" disabled>
+            <span class="checkmark"></span>
+        </label>
+
+        <label class="subCheckBox-container">Mått och uppföljning
+            <input type="checkbox" [(ngModel)]="how_goal" [checked]="how_goal !== ''" disabled>
+            <span class="checkmark"></span>
+        </label>
+
+        <label class="subCheckBox-container">Planering
+            <input type="checkbox" [(ngModel)]="plan && planned_time && evaluate_changes"
+                [checked]="plan !== '' && planned_time !== '' && evaluate_changes !== ''" disabled>
+            <span class="checkmark"></span>
+        </label>
+
+        <label class="checkBox-container">Studera
+            <input type="checkbox"
+                [(ngModel)]="improvment && time && trends && effects"
+                [checked]="improvment !== ''&& time !== '' && trends !== '' && effects !== ''"
+                disabled>
+            <span class="checkmark"></span>
+        </label>
+
+        <label class="subCheckBox-container">Resultat
+            <input type="checkbox" [(ngModel)]="improvment && time && trends && effects"
+                [checked]="improvment !== '' && time !== '' && trends !== '' && effects !== ''" disabled>
+            <span class="checkmark"></span>
+        </label>
+
+        <label class="checkBox-container">Agera
+            <input type="checkbox"
+                [(ngModel)]="teachings && evaluate_plan && improvment_plan && evaluate_do && next_step && spreading && maintain && future"
+                [checked]="teachings !== ''&& evaluate_plan !== '' && improvment_plan !== '' && evaluate_do !== '' && next_step !== '' && spreading !== '' && maintain !== '' && future !== ''"
+                disabled>
+            <span class="checkmark"></span>
+        </label>
+
+        <label class="subCheckBox-container">Reflektion och lärdomar
+            <input type="checkbox" [(ngModel)]="teachings && evaluate_plan && improvment_plan && evaluate_do"
+                [checked]="teachings !== ''&& evaluate_plan !== '' && improvment_plan !== '' && evaluate_do !== '' " disabled>
+            <span class="checkmark"></span>
+        </label>
+
+        <label class="subCheckBox-container">Nästa steg
+            <input type="checkbox" [(ngModel)]="next_step && spreading && maintain && future"
+                [checked]="next_step !== ''&& spreading !== '' && maintain !== '' && future !== ''" disabled>
+            <span class="checkmark"></span>
+        </label>
+
+
+        <div class="title-container">
+            <p class="right-sub-title">Område</p>
+            <div class="image-container">
+                <p class="question-mark"></p>
+                <div class="popup-text-sidebar">Välj plats, centrum och klinik/avdelning som förändringsarbetet är tänkt
+                    att genomföras på.</div>
+            </div>
+        </div>
+        <div class="dropdown" [class.active]="this.activeDropdown === 'place'">
+            <button class="dropdown-button" id="dropdown-button" (click)="toggleDropdown('place')">
+              {{this.place.name}}
+              <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="17" height="9" viewBox="0 0 17 9" fill="none">
+                <path d="M8.49999 8.43133C7.81351 8.43133 7.12704 8.16654 6.60728 7.64679L0.213297 1.25281C-0.0710991 0.968418 -0.0710991 0.497693 0.213297 0.213297C0.497693 -0.0710991 0.968418 -0.0710991 1.25281 0.213297L7.6468 6.60727C8.11752 7.07799 8.88245 7.07799 9.35317 6.60727L15.7472 0.213297C16.0316 -0.0710991 16.5023 -0.0710991 16.7867 0.213297C17.0711 0.497693 17.0711 0.968418 16.7867 1.25281L10.3927 7.64679C9.87293 8.16654 9.18646 8.43133 8.49999 8.43133Z" fill="#292D32" />
+              </svg>
+            </button>
+            <div class="dropdown-content">
+              <a class="options" *ngFor="let place of places" (click)="changePlace(place)">
+                {{ place.name }}
+              </a>
+            </div>
+          </div>
+          
+          <div class="dropdown" [class.active]="this.activeDropdown === 'center'">
+            <button class="dropdown-button" id="dropdown-button" (click)="toggleDropdown('center')">
+              {{this.center.name}}
+              <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="17" height="9" viewBox="0 0 17 9" fill="none">
+                <path d="M8.49999 8.43133C7.81351 8.43133 7.12704 8.16654 6.60728 7.64679L0.213297 1.25281C-0.0710991 0.968418 -0.0710991 0.497693 0.213297 0.213297C0.497693 -0.0710991 0.968418 -0.0710991 1.25281 0.213297L7.6468 6.60727C8.11752 7.07799 8.88245 7.07799 9.35317 6.60727L15.7472 0.213297C16.0316 -0.0710991 16.5023 -0.0710991 16.7867 0.213297C17.0711 0.497693 17.0711 0.968418 16.7867 1.25281L10.3927 7.64679C9.87293 8.16654 9.18646 8.43133 8.49999 8.43133Z" fill="#292D32" />
+              </svg>
+            </button>
+            <div class="dropdown-content">
+              <a class="options" *ngFor="let center of centers" (click)="changeCenter(center)">
+                {{ center.name }}
+              </a>
+            </div>
+          </div>
+          
+          <div class="dropdown" [class.active]="this.activeDropdown === 'unit'">
+            <button class="dropdown-button" id="dropdown-button" (click)="toggleDropdown('unit')">
+              {{this.unit.name}}
+              <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="17" height="9" viewBox="0 0 17 9" fill="none">
+                <path d="M8.49999 8.43133C7.81351 8.43133 7.12704 8.16654 6.60728 7.64679L0.213297 1.25281C-0.0710991 0.968418 -0.0710991 0.497693 0.213297 0.213297C0.497693 -0.0710991 0.968418 -0.0710991 1.25281 0.213297L7.6468 6.60727C8.11752 7.07799 8.88245 7.07799 9.35317 6.60727L15.7472 0.213297C16.0316 -0.0710991 16.5023 -0.0710991 16.7867 0.213297C17.0711 0.497693 17.0711 0.968418 16.7867 1.25281L10.3927 7.64679C9.87293 8.16654 9.18646 8.43133 8.49999 8.43133Z" fill="#292D32" />
+              </svg>
+            </button>
+            <div class="dropdown-content">
+              <a class="options" *ngFor="let unit of units" (click)="changeUnit(unit)">
+                {{ unit.name }}
+              </a>
+            </div>
+          </div>
+          
+        <div class="title-container">
+            <p class="right-sub-title">Deltagare</p>
+            <div class="image-container">
+                <p class="question-mark"></p>
+                <div class="popup-text-sidebar">Välj de personer som är deltagare i förändringsarbetet.</div>
+            </div>
+        </div>
+        <app-team-mates *ngFor="let teamMate of team; index as i" 
+            [name]="teamMate.name" 
+            [id]="teamMate.id"
+            [height]="'6%;'"
+            [width]="'72%;'"
+            [margin]="'10%;'"
+            [bottom]="'5%;'"
+            (deleteTeamOutput)="removeParticipant(i)">
+        </app-team-mates>
+        <div class="container-participant" (click)="openAddParticipant()">
+            <div class="name">
+                <p>Lägg till</p>
+            </div>
+            <div class="plus">
+                +
+            </div>
+        </div>
+        <div id="addParticipant" class="container-add-participant">
+            <div id="add-title">
+                <div class="closeCross">
+                    <img src="../../assets/create/exitCrossWhite.png" alt="exit cross" id="closeCross"
+                        (click)="closeAddParticipant()">
+                </div>
+                <p>Lägg till deltagare</p>
+            </div>
+
+            <div class="serch-bar-participant">
+                <input type="text" placeholder="Sök efter deltagare..." [(ngModel)]="searchName"
+                    class="input-participant">
+                <div class="serch-icon" (click)="searchUser()">
+                    <p>Sök</p>
+                    <img src="../../assets/create/Search.png" alt="Sök icon">
+                </div>
+            </div>
+            <div class="serch-before" id="serch-before">
+                <p id="search-text">Sök efter personer för att se resultat</p>
+            </div>
+            <div class="serch-after" id="serch-after">
+                <app-searched-user *ngFor="let user of searchedUsers; index as i" [name]="user.name"
+                    [center]="user.center" [unit]="user.unit" [place]="user.place" [id]="user.id"
+                    (addMember)="addParticipant(i)">
+                </app-searched-user>
+            </div>
+        </div>
+    </div>
+    <script src="create.component.ts"></script>
+</div>

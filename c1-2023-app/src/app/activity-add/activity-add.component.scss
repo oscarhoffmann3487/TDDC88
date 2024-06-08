@@ -1,0 +1,250 @@
+.space-between-elements{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.activity-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    
+}
+
+.activity-title h4{
+    margin-bottom: 0;
+    margin-top: 0.5%;
+}
+
+.exit-cross {
+    padding-right: 1%;
+    padding-top: 1%;
+    cursor: pointer;
+}
+
+.activity-text{
+    font-size: 12px;
+    font-family: Roboto;
+}
+
+.activity-textarea {
+    border: 1px solid #B9B9B9;
+    border-radius: 10px;
+    font-family: Roboto;
+    width: 85%;
+    margin-top: 1%;
+    padding-left: 1.5%;
+    padding-right: 1.5%;
+    resize: none;
+}
+
+.activity-textarea-title{
+    height: 2vw;
+    font-size: 14px;
+}
+
+.activity-textarea-description{
+    height: 3vw;
+}
+
+.space-around-elements {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1%;
+    padding-bottom: 2%;
+}
+
+.priority-dropdown{
+    display: flex;
+    flex-direction: column;
+}
+
+.label-prio h4{
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 2%;
+}
+
+#priority{
+    text-align: center;
+    width: 150%;
+    border-radius: 15px;
+    border: 0;
+    background-color: #E9E9E9;
+    height: 2vw;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 400; 
+}
+
+.save-button{
+    border-radius: 15px;
+    margin-left: 2%;
+    margin-right: 2%;
+    color: #fff;
+    background-color: #182745;
+    width: 15%;
+    border: 0px;
+    height: 3vw;   
+}
+
+
+//------add responsible user-----
+.resposible-user-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 60%;
+}
+
+.resposible-user-container h4{
+    margin-top: 0;
+    margin-bottom: 1%;
+}
+
+.container-team-members{
+    width: 100%;
+}
+
+.container-participant {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    align-items: center;
+    margin-bottom: 1%;
+    width: 40%;
+    border-radius: 20px;
+    background: #F6F6F6;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.participantTitle p{
+    margin-bottom: 2%;
+}
+
+.name-activity {
+    text-align: left;
+    padding-left: 5%;
+    flex-grow: 1;
+    color: #000;
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.name-activityp{
+    margin: 0;
+}
+
+.plus {
+    text-align: right;
+    padding-right: 7%;
+    color: #000;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+
+#add-Participant-Activity{
+    display: none;
+}
+
+.container-add-participant{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-left: 0.5%;
+    margin-bottom: 2%;
+    width: 60%
+}
+
+#add-title{
+    font-family: Roboto;
+    background-color: #182745;
+    color: #FFF;
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    text-align: center; 
+    font-size: 17px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+
+}
+
+.closeCross{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: -2.5vw;
+}
+
+#closeCross{
+    cursor: pointer;
+    margin-right: 2%;
+    margin-top: 2%;
+}
+
+.serch-bar-participant{
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    width: 80%;
+}
+
+.input-participant{
+    border: 0px;
+    margin-left: 1%;
+    border-radius: 20px;
+    width: 70%;
+    font-style: italic;
+    font-family: Roboto;
+}
+
+.input-participant:focus {
+    outline: none;
+}
+
+.serch-icon{
+    display: flex;
+    align-items: center;
+    justify-content:  space-evenly;
+    color: #F6F6F6;
+    background-color: #182745;
+    font-size: 14px;
+    height: 100%;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    width: 30%;
+    padding: 1px;
+    cursor: pointer; 
+}
+.serch-icon p{
+    margin: 0;
+    font-family: Roboto;
+}
+
+.serch-before{
+    font-style: italic;
+    font-family: Roboto;
+    font-size: 12px;
+    margin-bottom: 2%;
+}
+
+#serch-after-activity{
+    display: none;
+    margin: 2%;
+}
+

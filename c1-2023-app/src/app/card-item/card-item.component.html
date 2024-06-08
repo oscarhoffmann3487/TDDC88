@@ -1,0 +1,50 @@
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<div class="iwc-wrapper">
+    <div class="iwc-content">
+        <div class="iwc-top-row">
+            <div class="left-content"> <!--  (click)="openModal(card.title) REMOVED FOR TESTING PURPOSES -->
+                <p class="iwc-title inline-elements" (click)="openModal()">{{ card.title }}</p>
+                <h3 class="title" class="inline-elements" *ngIf="card.archive_date != null"> (Arkiverat {{
+                    card.archive_date}})</h3>
+            </div>
+            <div class="right-content">
+                <p class="iwc-unit inline-elements">{{ card.unit }}</p>
+                <app-heart [number_of_likes]="card.numberOfLikes" [iw_id]="card.id"></app-heart>
+            </div>
+        </div>
+        <div (click)="openModal()" style="display: flex; gap: 5px;">
+            <p class="iwc-description">{{ card.description }}</p>
+            <div class="iwc-button-container">
+                <!--<button class="btn-blue">Publicera</button>     NOTE: Dessa kan kommenteras bort för att visa resp. knapp på min-sida
+                <button class="btn-grey">Redigera</button>-->
+            </div>
+        </div>
+        <div class="bottom-row">
+            <div class="left-content">
+                <img class="iwc-profile-circle inline-elements" src="assets/iwmodal/icon_profile_pic.png" />
+                <p class="inline-elements iwc-owner" (click)="openContact(card.owner)">{{ card.owner.first_name }} {{
+                    card.owner.last_name }}</p>
+            </div>
+
+            <div class="iwc-pdsa-wrapper">
+                <span class="iwc-pdsa-bar">
+                    <span [style.width]="(pdsaInt()/3)*100 + '%'" class="iwc-pdsa-progress"></span>
+                </span>
+                <ul class="iwc-pdsa-stages">
+                    <li [ngStyle]="stageStyleObject(0)">P</li>
+                    <li [ngStyle]="stageStyleObject(1)">G</li>
+                    <li [ngStyle]="stageStyleObject(2)">S</li>
+                    <li [ngStyle]="stageStyleObject(3)">A</li>
+                </ul>
+            </div>
+
+            <div class="right-content" style="flex: 1; justify-content: space-between;">
+                <p class="iwc-date">{{ card.created_at.substring(0,10) }}</p>
+                <p style="margin: 0; font-size: 14px;">{{ card.numberOfComments }}
+                    <img class="iwc-comments-num" (click)="openModal(true)" src="assets/iwmodal/icon_comments.png" />
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>

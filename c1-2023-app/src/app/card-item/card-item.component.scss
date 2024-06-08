@@ -1,0 +1,285 @@
+.iwc-wrapper {
+    border-style: solid;
+    border-color: #D4D4D4;
+    border-width: -1px -1px -1px -1px;
+    border-radius: 20px;
+    margin: 10px auto;
+    width: 90%;
+    max-width: 774px;
+    background-color: #FFFFFF;
+    transition-duration: .5s;
+}
+
+.iwc-wrapper:hover {
+    cursor: pointer;
+    transform: translateX(-10px);
+    transition-duration: .2s;
+}
+
+.iwc-content {
+    margin: 12px 36px;
+}
+
+.iwc-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.iwc-unit {
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 400;
+    text-align: right;
+    margin-right: 25px;
+}
+
+.iwc-profile-circle {
+    vertical-align: middle;
+    width: 18px;
+    height: auto;
+}
+
+.iwc-description {
+    font-size: 12px;
+    font-weight: 400;
+    margin-block: 5px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.iwc-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.iwc-pdsa-wrapper {
+    width: 283px;
+    position: relative;
+    display: inline-block;
+    flex: 1;
+}
+
+.iwc-pdsa-stages {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    justify-content: space-between;
+    margin: 0;
+}
+
+.iwc-pdsa-stages > li {
+    display: inline;
+    position: relative;
+    transform: translateZ(-1px);
+    width: 11px;
+    text-align: center;
+    color: var(--stage-text-color);
+}
+
+.iwc-pdsa-stages > li:after {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 25px;
+    background-color: var(--stage-color);
+    z-index: -1;
+    transform: translateZ(-1px);
+    top: -3px;
+    left: -6.825px;
+}
+
+.iwc-pdsa-stages > li:not(:last-child) {
+    margin-right:77px;
+}
+
+.iwc-pdsa-bar {
+    background-color: #DFDFDF;
+    height: 5px;
+    display: inline;
+    position: absolute;
+    bottom: calc(50% - 2.5px);
+    width: 100%;
+}
+    .iwc-pdsa-bar > span {
+        height: 100%;
+        background-color: #182745;
+        position: absolute;
+    }
+
+
+.iwc-date {
+    font-style: italic;
+    font-size: 12px;
+    padding-left: 55px;
+    margin: 0;
+}
+
+.iwc-comments-num {
+    vertical-align: middle;
+    width: 30px;
+    height: auto;
+    cursor: pointer;
+}
+
+.iwc-button-container {
+    align-content: center;
+    display: inline-grid;
+    gap: 5px;
+}
+
+.iwc-button-container > button {
+    width: 90px;
+    height: 23px;
+    padding: 0;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition-duration: .1s;
+}
+
+.iwc-button-container > button:hover {
+    transform: scale3D(1.05, 1, 1);
+}
+
+.btn-grey {
+    background-color: #DDD;
+    color: #000;
+}
+
+.btn-blue {
+    background-color: #182745;
+    color: #FFFFFF;
+}
+
+.iwc-owner {
+    font-style: italic;
+    text-align: right;
+    margin-left: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/*
+    Hereby follows old SCSS code
+*/
+
+
+.inline-elements {
+    display: inline;
+}
+
+.card-content {
+    border-style: solid;
+    border-left-color: #182745;
+    border-color: #182745;
+    border-width: 1px 1px 1px 20px;
+    border-radius: 0.7rem;
+    margin: 20px;
+    padding: 20px;
+    width: 90%;
+    height: 257px;
+    background-color: white;
+}
+
+.top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.left-content {
+    flex: 1;
+}
+
+.right-content {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    font-family: Roboto;
+    font-size: 24px;
+    font-style: bold;
+}
+.description {
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    height: 100px;
+}
+
+.bottom-row {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+#likes {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0em;
+    margin: 0;
+    margin-right: 5px;
+}
+
+#comments {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0em;
+    margin: 0;
+    margin-right: 5px;
+}
+
+.icon-like {
+    vertical-align: middle;
+    width: 30px;
+    height: auto;
+    margin-right: 5px;
+    margin-left: 50px;
+}
+
+.icon-comments {
+    vertical-align: middle;
+    width: 30px;
+    height: auto;
+    margin-right: 5px;
+}
+
+.icon-profile-circle {
+    vertical-align: middle;
+    width: 35px;
+    height: auto;
+}
+
+.icon-progress {
+    width: 415px;
+    height: auto;
+}
+
+.open-modal {
+    font-family: Roboto;
+    text-decoration: underline;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-top: 10px;
+    margin-left: 10px;
+}

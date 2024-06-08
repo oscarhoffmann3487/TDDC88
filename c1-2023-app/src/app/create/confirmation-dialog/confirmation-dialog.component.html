@@ -1,0 +1,9 @@
+<div class="confirmation-dialog" *ngIf="showConfirmationDialog">
+    <div class="dialog-content">
+        <p>{{ confirmationText }}</p>
+        <div class="button-container">
+            <button class="yes-button" (click)="confirmPost()">Ja</button>
+            <button class="no-button" (click)="cancelPost()">Nej</button>
+        </div>
+    </div>
+</div>

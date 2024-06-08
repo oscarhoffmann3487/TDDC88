@@ -1,0 +1,17 @@
+.loading-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 75px;
+}
+
+.loading-div img {
+    width: 220px;
+    padding: 0;
+}
+
+.loading-div h2 {
+    margin-top: 10px;
+}

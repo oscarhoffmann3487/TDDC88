@@ -1,0 +1,229 @@
+<link href="https://unpkg.com/@angular/material/prebuilt-themes/indigo-pink.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<body class="body" [ngStyle]=" {'border-left' : (archive_date === null ? '20px solid #182745' : '20px solid #B2A37B')}">
+    <div class="content-container">
+        <div class="header">
+            <div class="left-section">
+                <h1 class="title-header" *ngIf="archive_date != null">Arkiverat: </h1>
+                <h1 class="title-header">{{name}}</h1>
+                <h2 class="department-header">{{unit}}</h2>
+            </div>
+            <div class="right-section">
+                <h2 class="create-date">{{ created_at.substring(0,10) }}</h2>
+            </div>
+        </div>
+        <mat-dialog-content class="mat-typography">
+            <div class="description">
+                <h2 class="description-header">Beskrivning</h2>
+                <p class="description-text">{{description}}</p>
+            </div>
+            <div class="description" *ngIf="archive_date != null">
+                <h2 class="description-header">Orsak till arkivering</h2>
+                <p class="description-text">{{archive}}</p>
+            </div>
+            <div class="status">
+                <h2>PGSA-status</h2>
+                <button class="plan-button" [style.background-color]="planPhaseBackgroundColor"
+                    [style.color]="planPhaseTextColor">
+                    Planera
+                </button>
+                <button class="do-button" [style.background-color]="doAtivePhaseBackgroundColor"
+                    [style.color]="doActivePhaseTextColor">
+                    Gör
+                </button>
+                <button class="study-button" [style.background-color]="studyPhaseBackgroundColor"
+                    [style.color]="studyPhaseTextColor">
+                    Studera
+                </button>
+                <button class="act-button" [style.background-color]="actAtivePhaseBackgroundColor"
+                    [style.color]="actActivePhaseTextColor">
+                    Agera
+                </button>
+
+                <img id="p" class="pdsa-status" src="assets/iwmodal/icon_progress_p.png" alt="Status A Image" />
+                <img id="d" class="pdsa-status" src="assets/iwmodal/icon_progress_d.png" alt="Status P Image" />
+                <img id="s" class="pdsa-status" src="assets/iwmodal/icon_progress_s.png" alt="Status S Image" />
+                <img id="a" class="pdsa-status" src="assets/iwmodal/icon_progress_a.png" alt="Status S Image" />
+            </div>
+            <div>
+                <div class="pdsa-titles">
+                    <p class="title-button" (click)="setDisplayStatus('P')" [class.underline]="display_status === 'P'">
+                        Planera</p>
+                    <p class="title-button" (click)="setDisplayStatus('D')" [class.underline]="display_status === 'D'">
+                        Gör</p>
+                    <p class="title-button" (click)="setDisplayStatus('S')" [class.underline]="display_status === 'S'">
+                        Studera</p>
+                    <p class="title-button" (click)="setDisplayStatus('A')" [class.underline]="display_status === 'A'">
+                        Agera</p>
+                </div>
+
+                <div *ngIf="display_status=='P'">
+                    <h2>Mål och syfte</h2>
+                    <p class="subheading">Vad är det aktuella problemet?</p>
+                    <p class="regular-text">{{problem}}</p>
+                    <p class="subheading">Vad är målet med förändringsarbetet?</p>
+                    <p class="regular-text">{{goal}}</p>
+                    <p class="subheading">Varför vill vi genomföra förändringsarbetet?</p>
+                    <p class="regular-text">{{how}}</p>
+                    <h2>Idéer</h2>
+                    <p class="subheading">Vilka förändringar kan vi göra som leder till en förbättring?</p>
+                    <p class="regular-text">{{ideas}}</p>
+                    <h2>Mått och uppföljning</h2>
+                    <p class="subheading">Hur kan vi avgöra om förändringarna har lett till en förbättring?</p>
+                    <p class="regular-text">{{how_goal}}</p>
+                    <h2>Planering</h2>
+                    <p class="subheading">Hur ska genomförandet av förändringsarbetet gå till?</p>
+                    <p class="regular-text">{{plan}}</p>
+                    <p class="subheading">Hur planerar vi att hitta tid för att genomföra förändringsarbetet?</p>
+                    <p class="regular-text">{{planned_time}}</p>
+                    <p class="subheading">Hur planerar vi att följa upp och mäta förändringen?</p>
+                    <p class="regular-text">{{evaluate_changes}}</p>
+                </div>
+
+                <div *ngIf="display_status=='S'">
+                    <h2>Resultat</h2>
+                    <p class="subheading">Resulterade arbetet i en förbättring? Med hur mycket eller lite? </p>
+                    <p class="regular-text">{{improvment}}</p>
+                    <p class="subheading">Var arbetet värt investeringen av tid? </p>
+                    <p class="regular-text">{{time}}</p>
+                    <p class="subheading">Ser ni några trender? </p>
+                    <p class="regular-text">{{trends}}</p>
+                    <p class="subheading">Tillkom det oväntade sidoeffekter? </p>
+                    <p class="regular-text">{{effects}}</p>
+                </div>
+
+                <div *ngIf="display_status=='A'">
+                    <h2>Reflektion och lärdomar</h2>
+                    <p class="subheading">Vilka lärdomar kan vi hämta från förbättringsarbetet?</p>
+                    <p class="regular-text">{{teachings}}</p>
+                    <p class="subheading">Var planeringen bra gjord?</p>
+                    <p class="regular-text">{{evaluate_plan}}</p>
+                    <p class="subheading">Kan ni göra förbättringar till planeringsfasen till nästa gång?</p>
+                    <p class="regular-text">{{improvment_plan}}</p>
+                    <p class="subheading">Blev genomförandet bra gjort? Finns det områden som kan förbättras när det
+                        kommer till att samla in data? </p>
+                    <p class="regular-text">{{evaluate_do}}</p>
+                    <h2>Nästa steg</h2>
+                    <p class="subheading">Vad är nästa steg? Bör arbetet avslutas eller genomgå ytterligare ett
+                        PGSA-varv?</p>
+                    <p class="regular-text">{{next_step}}</p>
+                    <p class="subheading">Hur bör förändringen spridas inom och utanför enheten?</p>
+                    <p class="regular-text">{{spreading}}</p>
+                    <p class="subheading">Hur ska ni se till att era framgångar med detta förbättringsarbete bibehålls
+                        och förs vidare?</p>
+                    <p class="regular-text">{{maintain}}</p>
+                    <p class="subheading">Hur kan ni planera in långsiktiga planer till nya framtida förbättringar
+                        kopplat till detta förbättringsarbete?</p>
+                    <p class="regular-text">{{future}}</p>
+                </div>
+
+                <div class="activities">
+                    <h2>Aktiviteter</h2>
+                    <h3>Pågående</h3>
+                    <div *ngFor="let activity of activities; index as i">
+                        <div *ngIf="activity.pdsa_tag == display_status" class="activity"
+                            [style.border-color]="activityBorder(activity.priority_level)">
+                            <div *ngIf="!activity.finished">
+                                <p class="activity-title">{{ activity.title }}</p>
+                                <p class="activity-text">{{ activity.description }}</p>
+                                <div *ngIf="canEditActivity" class="bottom-items">
+                                    <div class="finished">
+                                        Markera som avklarad
+                                    </div>
+                                    <div class="checkbox" (click)="changeStatus(i)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" [ngClass]="{'fill-box': activity.finished}">
+                                            <path d="M2.87389 0L0 2.87389L1.46752 4.3414L5.09554 8.03057L1.46752 11.6586L0 13.065L2.87389 16L4.3414 14.5325L8.03057 10.8433L11.6586 14.5325L13.065 16L16 13.065L14.5325 11.6586L10.8433 8.03057L14.5325 4.3414L16 2.87389L13.065 0L11.6586 1.46752L8.03057 5.09554L4.3414 1.46752L2.87389 0Z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Avklarade</h3>
+                    <div *ngFor="let activity of activities; index as i">
+                        <div *ngIf="activity.pdsa_tag == display_status" class="activity-finished activity"
+                            [style.border-color]="activityBorder(activity.priority_level)">
+                            <div *ngIf="activity.finished">
+                                <p class="activity-title">{{ activity.title }}</p>
+                                <p class="activity-text">{{ activity.description }}</p>
+                                <div *ngIf="canEditActivity" class="bottom-items">
+                                    <div class="finished">
+                                        Markera som avklarad
+                                    </div>
+                                    <div class="checkbox" (click)="changeStatus(i)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" [ngClass]="{'fill-box': activity.finished}">
+                                            <path d="M2.87389 0L0 2.87389L1.46752 4.3414L5.09554 8.03057L1.46752 11.6586L0 13.065L2.87389 16L4.3414 14.5325L8.03057 10.8433L11.6586 14.5325L13.065 16L16 13.065L14.5325 11.6586L10.8433 8.03057L14.5325 4.3414L16 2.87389L13.065 0L11.6586 1.46752L8.03057 5.09554L4.3414 1.46752L2.87389 0Z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comments">
+                <h2>Kommentarer</h2>
+                <div class="comment-section">
+                    <div class="text-input">
+                        <textarea #comment class="title-box" placeholder="Skriv en kommentar..."></textarea>
+                        <img class="comment-send-image" (click)="sendComment(comment.value, comment)"
+                            (click)="comment.value = ''" src="../../../assets/iwmodal/sendComment.svg">
+                    </div>
+                    <div *ngFor="let comment of commentList" class="comment-card">
+                        <div class="comment-header">
+                            <div class="answer-item">
+                                <p class="name-comments">{{comment.User.first_name}} {{comment.User.last_name}}</p>
+                                <p>{{comment.comment}}</p>
+                                <p>{{comment.created_at}}</p>
+                            </div>
+                            <button class="buttonForAnswer" (click)="toggleAnswerDiv(comment.id)">Svara</button>
+                        </div>
+                        <div id="answerBox{{comment.id}}" class="comment-text-input" style="display:none">
+                            <textarea #answer class="answer-box" id="comment-or-answer"
+                                placeholder="Skriv en kommentar..."></textarea>
+                            <img class="answer-send-image" (click)="sendAnswer(answer.value, comment.id, answer)"
+                                src="../../../assets/iwmodal/sendComment.svg">
+                        </div>
+                        <div class="comment-content">
+                            <div *ngIf="comment.answers">
+                                <div *ngFor="let answer of comment.answers" class="answer-item" id="answer-comments">
+                                    <p class="name-comments">{{answer.User.first_name}} {{answer.User.last_name}}</p>
+                                    <p>{{answer.answer}}</p>
+                                    <p>{{answer.created_at}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </mat-dialog-content>
+    </div>
+    <div class="right-div">
+        <div class="owner">
+            <img class="owner-img" src="assets/iwmodal/icon_profile_pic.png" />
+            <p class="owner-name">{{owner.first_name}} {{owner.last_name}}</p>
+        </div>
+        <div class="participants">
+            <h2 class="participant-header">Deltagare</h2>
+            <div *ngFor="let participant of participantList">
+                <div class="user"><img class="user-img"
+                        src="assets/iwmodal/icon_profile_pic.png" />{{participant.first_name}} {{participant.last_name}}
+                </div>
+            </div>
+        </div>
+
+        <button (click)="goToDrive()" class="sharpointButton">
+            <img src="../../../assets/iwmodal/sharepoint.png" alt="sharpoint logga">
+            <p>Samarbetsyta</p>
+        </button>
+        <button *ngIf="canEditActivity == true" (click)="goToEdit()" class="edit-button" mat-dialog-close><i
+                class="fa fa-pencil"></i>Redigera</button>
+        <button mat-dialog-close><img src="assets/iwmodal/icon_x.png" /></button>
+    </div>
+
+</body>

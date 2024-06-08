@@ -1,0 +1,100 @@
+.notification-box {
+    position: absolute;
+    background-color: white;
+    border-radius: 20px;
+    width: 20%;
+    height: auto;
+    top: 80px;
+    left: 65%;
+    border: 1px solid #D4D4D4;
+    padding-left: 1%;
+    padding-right: 1%;
+    z-index: 99999;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    height: auto;
+    padding: 0;
+    margin: 0;
+}
+
+.h2 {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+    margin: none;
+    padding: none;
+    margin-left: 10%;
+}
+
+.exit-cross {
+    padding-left: 60%;
+    cursor: pointer;
+}
+
+.notification {
+    display: flex;
+    align-items: center;
+    padding: none;
+    margin: none;
+    cursor: pointer;
+}
+
+.iw-change {
+    display: flex;
+    align-items: center;
+    padding: none;
+    margin: none;
+}
+
+.notis {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    padding: 0;
+    margin: 0;
+    color: #000000;
+}
+
+.date {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    padding: 0;
+    margin: 0;
+    color: #2272F3;
+    padding-bottom: 7px;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 7px;
+  }
+  
+  .line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: black; /* or any color you prefer */
+    margin: 0 10px; /* adjust the margin as needed */
+  }
+  
+  .text {
+    white-space: nowrap; /* prevent line break for the text */
+  }
+
+  .image {
+    width: 35px;
+    height: 35px;
+    padding-right: 10px;
+  }

@@ -1,0 +1,114 @@
+h1 {
+  margin-left: 5%;
+}
+
+.container {
+  display: flex;
+}
+
+.side{
+  width: 15%;
+  padding: 2%;
+}
+
+.middle{
+  width: 60%;
+  border-left: 2px solid rgba(0, 0, 0, 0.12);
+  border-right: 2px solid rgba(0, 0, 0, 0.12);
+  padding-right: 100px;
+} 
+
+#midelLabel{
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+#choseDepartment{
+  width: 60%;
+  border-radius: 25px;
+}
+
+#filterBrowsing{
+  display: flex;
+  align-items: center;
+}
+
+.filterCheck{
+  width: 100%;
+  margin-top: 10px;
+}
+
+#filterBrowsingText{
+  padding-right: 5px;
+}
+.filteContainer{
+  margin-left: 10%;
+}
+.box {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid black;
+}
+
+#headerPosition {
+  display: flex;
+  justify-content: center;
+  align-items: baseline; 
+  background-color:white;
+}
+
+.headerItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  width: 170px;  // Adjust as needed
+  text-align: center;
+}
+
+.header-link {
+  font-size: 15px; /* Adjust as needed */
+  font-weight: 800;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 5px;
+}
+
+#pageHeader {
+  margin-left: 4%;
+  margin-top: 0%;
+  margin-bottom: -1%;
+  background-color: white;
+}
+
+.boardHeader{
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: -20px;
+}
+
+.boardColumns {
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.columnMargin {
+  
+} 
+
+.parallax {
+  background-image: url("/assets/background_page.png");
+  height: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

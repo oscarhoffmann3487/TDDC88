@@ -1,0 +1,108 @@
+<div>
+    <div class="container">
+        <div class="filter-bar">
+            <div class="first-row">
+                <div class="headerImprovementWork">
+                    <h2>Arkivet</h2>
+                </div>
+                <div class="search-bar">
+                    <input #searchInput
+                        (keyup)="search(searchInput.value, clinic.value, PDSA.value, center.value, place.value,starttime.value, endtime.value, finished.value)"
+                        type="text" placeholder="Vad söker du?">
+                    <button type="submit"
+                        (click)="search(searchInput.value, clinic.value, PDSA.value, center.value, place.value,starttime.value, endtime.value, finished.value)">
+                        <p>Sök</p>
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+                <div class="filter-button-div">
+                    <button (click)="showFilters()" id="filterButton">
+                        <p>Filter</p>
+                        <i class="fa fa-filter"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="second-row" id="filterRow">
+                <div class="pdsa-choice">
+                    <p>PGSA-fas</p>
+                    <div id="dropdownChoseDepartmeantBrowsing">
+                        <select #PDSA name="choseDepartment" id="choseDepartment"
+                            (change)="search(searchInput.value, clinic.value, PDSA.value, center.value, place.value,starttime.value, endtime.value, finished.value)">
+                            <option value="">Klicka för att välja</option>
+                            <option value="P">Planera</option>
+                            <option value="G">Gör</option>
+                            <option value="S">Studera</option>
+                            <option value="A">Agera</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="location-column">
+                    <div class="location-choice">
+                        <p>Plats</p>
+                        <div id="dropdownChoseDepartmeantBrowsing">
+                            <select #place name="choseDepartment" id="choseDepartment" (change)="search(searchInput.value, clinic.value, PDSA.value, center.value, place.value,starttime.value, endtime.value,finished.value)">
+                                <option value="">Klicka för att välja</option>
+                                <option value="Linköping">Linköping</option>
+                                <option value="Norrköping">Norrköping</option>
+                                <option value="Motala">Motala</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="location-choice">
+                        <p>Klinik</p>
+                        <div id="dropdownChoseDepartmeantBrowsing">
+                            <select #clinic name="choseDepartment" id="choseDepartment"
+                                (change)="search(searchInput.value, clinic.value, PDSA.value, center.value, place.value,starttime.value, endtime.value,finished.value)">
+                                <option value="">Klicka för att välja</option>
+                                <option value="Akutavdelningen, Universitetssjukhuset">Akutavdelningen,
+                                    Universitetssjukhuset</option>
+                                <option value="Kirurgen, Universitetssjukhuset">Kirurgen, Universitetssjukhuset</option>
+                                <option value="Mödraravdelningen, Universitetssjukhuset">Mödraravdelningen,
+                                    Universitetssjukhuset</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="location-choice">
+                        <p>Centrum</p>
+                        <div id="dropdownChoseDepartmeantBrowsing">
+                            <select #center name="choseDepartment" id="choseDepartment"
+                                (change)="search(searchInput.value, clinic.value, PDSA.value, center.value, place.value, starttime.value, endtime.value, finished.value)">
+                                <option value="">Klicka för att välja</option>
+                                <option value="Barn- och kvinnocentrum">Barn- och kvinnocentrum</option>
+                                <option value="Centrum för kirurgi, ortopedi och cancervård">Centrum för kirurgi,
+                                    ortopedi och cancervård</option>
+                                <option value="Diagnostikcentrum">Diagnostikcentrum</option>
+                                <option value="Hjärtcentrum">Hjärtcentrum</option>
+                                <option value="Medicincentrum">Medicincentrum</option>
+                                <option value="Primärvårdscentrum">Primärvårdscentrum</option>
+                                <option value="Psykriatricentrum">Psykiatricentrum</option>
+                                <option value="Sinnescentrum">Sinnescentrum</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-column">
+                    <div class="time-choice">
+                        <p>Tidsintervall</p>
+                        <input type="date" class="time-picker" id="startDate" #starttime
+                            (change)="search(searchInput.value, clinic.value, PDSA.value, center.value, place.value, starttime.value, endtime.value, finished.checked)">
+                        <p>-</p>
+                        <input type="date" class="time-picker" id="endDate" #endtime (change)="search(searchInput.value, clinic.value, PDSA.value, center.value, place.value, starttime.value, endtime.value, finished.checked)">
+                        </div>
+                        <div class="iw-filter">
+                            <input type="checkbox" #finished (change)="search(searchInput.value, clinic.value, PDSA.value, center.value, place.value, starttime.value, endtime.value, finished.checked)"> Visa avslutade förändringsarbeten
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="alignCenter">
+            <button *ngIf="dropDown == true" id="clearFilters" (click)="clearFilters()">Rensa filter</button>
+            </div>
+            <div>
+                <app-card-item *ngFor="let card of cardList" [card]="card"></app-card-item>
+            </div>
+        </div>
+        <div class="column"></div>
+    </div>
+</div>

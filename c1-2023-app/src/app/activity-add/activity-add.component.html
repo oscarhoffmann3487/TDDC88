@@ -1,0 +1,90 @@
+<div class="space-between-elements">
+    <div class="activity-title">
+        <h4>Ny aktivitet</h4>
+    </div>
+    <div class="exit-cross" (click)="closeActivity()">
+        <img src="../../assets/create/exitCross.png" alt="stäng rutan">
+    </div>
+</div>
+<div>
+    <textarea class="activity-text activity-textarea activity-textarea-title" [(ngModel)]="title" placeholder="Title"></textarea>
+</div>
+<div>
+    <textarea class="activity-text activity-textarea activity-textarea-description" [(ngModel)]="description" placeholder="Beskriv Aktiviteten som ska genomföras..."></textarea>
+</div>
+
+<div class="space-around-elements">
+    <div class="priority-dropdown">
+        <label class="label-prio" for="priority"><h4>Prioritering</h4></label>
+        <select id="priority" [(ngModel)]="displayPrio" (change)="setPrio()">
+            <option value="">Välj prioritering</option>
+            <option *ngFor="let prio of priorities" [value]="prio">{{ prio }}</option>
+        </select>
+    </div>
+    
+    <div class="resposible-user-container">
+        <h4>Deltagare</h4>
+        <div class="container-team-members">
+            <app-team-mates [style]="'display:flex;justify-content:center;'" *ngFor="let members of team; index as i" 
+                [name]="members.name" 
+                [id]="members.id"
+                [height]="'15%;'"
+                [width]="'40%;'"
+                [margin]="'0;'"
+                [bottom]="'1%;'"
+                (deleteTeamOutput)="removeParticipant(i)">
+            </app-team-mates>
+        </div>
+        <div class="container-participant" (click)="openAddParticipant()">
+            <div class="name-activity">
+                <p>Lägg till</p>
+            </div>
+            <div class="plus">
+                +
+            </div>
+        </div>
+        <div id="add-Participant-Activity" class="container-add-participant">
+            <div id="add-title" class="participantTitle">
+                <div class="closeCross">
+                    <img src="../../assets/create/exitCrossWhite.png" alt="exit cross" id="closeCross"
+                        (click)="closeAddParticipant()">
+                </div>
+                <p>Lägg till deltagare</p>
+            </div>
+
+            <div class="serch-bar-participant">
+                <input type="text" placeholder="Sök efter deltagare..." [(ngModel)]="searchName"
+                    class="input-participant">
+                <div class="serch-icon" (click)="searchUser()">
+                    <p>Sök</p>
+                    <img src="../../assets/create/Search.png" alt="Sök icon">
+                </div>
+            </div>
+            <div class="serch-before" id="serch-before-activity">
+                <p id="search-text-activity">Sök efter personer för att se resultat</p>
+            </div>
+            <div class="serch-after" id="serch-after-activity">
+                <app-searched-user *ngFor="let user of searchedUsers; index as i" 
+                    [name]="user.name"
+                    [center]="user.center" 
+                    [unit]="user.unit" 
+                    [place]="user.place" 
+                    [id]="user.id"
+                    (addMember)="addParticipant(i)">
+                </app-searched-user>
+            </div>
+        </div>
+    </div>
+
+    <button class="save-button activity-text" (click)="saveActivity()" >spara</button>
+</div>
+
+
+<!-- TD check all css classes and delete if needed-->
+        <!--<input id="input-title-activity"  *ngIf="isEditMode" [(ngModel)]="activityTitle">
+        <div id="title-activity" *ngIf="!isEditMode">{{ activityTitle }}</div>
+    
+        <div (click)="toggleEditMode()">
+        <img id="edit-icon" src="assets/create_iw/icon_edit.png" alt="Edit Icon" *ngIf="!isEditMode">
+        <img id="edit-icon" src="assets/create_iw/icon_edit.png" alt="Save Icon" *ngIf="isEditMode">
+        </div> --> 

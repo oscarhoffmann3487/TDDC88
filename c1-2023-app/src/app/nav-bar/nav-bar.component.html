@@ -1,0 +1,41 @@
+<div class="navbar">
+    <div class="navbar-1st-row">
+        <a routerLink="/browsing">
+            <img src="../../assets/navbar/ROlogo1.png" alt="Logo" style="width: 220px">
+        </a>
+        <div class="right-elements">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Sök förbättringsarbeten...">
+                <button type="submit">
+                    <img src="../../assets/navbar/searchIcon.png" alt="Search Icon">
+                </button>
+            </div>
+            <div class="notification-button" (click)="showNotifications()" role="button">
+                <img src="../../assets/navbar/notificationIcon.svg" alt="notificationIcon">
+                <div>Notiser</div>
+            </div>
+            <app-notification *ngIf="showNotification" (cancelEvent)="closeNotifications()"></app-notification>
+            <app-login-button> </app-login-button>
+        </div>
+    </div>
+    <div class="navbar-2nd-row">
+        <ul class="nav-links">
+            <li routerLinkActive="active"><a routerLink="/browsing"><ng-container *ngIf="isActive('/browsing')"><img
+                            src="../../assets/navbar/activeIcon.png" alt="activeIcon"></ng-container>Aktuella
+                    förbättringsarbeten</a></li>
+            <li routerLinkActive="active"><a routerLink="/create"><ng-container *ngIf="isActive('/create')"><img
+                            src="../../assets/navbar/activeIcon.png" alt="activeIcon"></ng-container>Skapa
+                    förbättringsarbeten</a></li>
+            <li routerLinkActive="active"><a routerLink="/search"> <ng-container *ngIf="isActive('/search')">
+                        <img src="../../assets/navbar/activeIcon.png" alt="activeIcon">
+                    </ng-container>Arkivet</a></li>
+            <li routerLinkActive="active"><a routerLink="/about"><ng-container *ngIf="isActive('/about')"><img
+                            src="../../assets/navbar/activeIcon.png" alt="activeIcon"></ng-container>Min sida</a></li>
+        </ul>
+    </div>
+</div>
+
+<!--Prevent the navbar to cover the page content-->
+<div class="sizedBox">
+
+</div>

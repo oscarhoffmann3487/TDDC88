@@ -1,0 +1,12 @@
+<ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+    <app-nav-bar></app-nav-bar>
+    <router-outlet> </router-outlet>
+    <app-user-profile></app-user-profile>
+</ng-container>
+
+<ng-template #loggedOut>
+    <div class="loading-div">
+        <img src="../assets/loading-screen/RO_logo_centered_black.png">
+        <h2>Laddar...</h2>
+    </div>
+</ng-template>

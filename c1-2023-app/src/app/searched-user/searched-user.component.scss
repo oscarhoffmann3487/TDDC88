@@ -1,0 +1,53 @@
+.searched-user-container{
+    border: 1px solid #DFDFDF;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+}
+
+.first-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: white;
+}
+
+.first-row p{
+    margin: 0;
+}
+
+#porfile-picure{
+    width: 10%;
+    height: auto;
+}
+
+.name{
+    font-style: italic;
+}
+
+.unit{
+    font-style: italic;
+    font-size: 12px;
+}
+
+.add-button {
+    cursor: pointer;
+    height: 4%;
+    padding-left: 1%;
+    padding-right: 1%;
+    border-radius: 20px;
+    background: var(--Primary, #182745);
+    color: #FFF;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}

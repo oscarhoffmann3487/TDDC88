@@ -1,0 +1,131 @@
+/* navbar.component.css */
+.navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+}
+
+.navbar-1st-row {
+    background-color: #182745;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar-1st-row img {
+    width: 50%;
+    height: auto;
+    padding-left: 30px;
+    padding: 10px 20px;
+}
+
+/* Search Bar Styles */
+.right-elements {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.search-bar {
+    background-color: white;
+    border-radius: 20px;
+    padding: 7px;
+    padding-left: 20px;
+    margin-right: 60px;
+    width: 227px;
+    height: 20px;
+    display: none;
+}
+
+.search-bar input[type="text"] {
+    font-style: italic;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    width: 190px;
+    margin-right: 5px;
+}
+
+.search-bar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.search-bar img {
+    width: 12px;
+    height: 12px;
+    padding: 0px;
+}
+
+.notification-button {
+    background: transparent;
+    border: 1px;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    margin-right: 50px;
+}
+
+.notification-button img {
+    width: 28px;
+    height: auto;
+    margin-left: 15px;
+    padding: 0px;
+}
+
+.notification-button:hover,
+.notification-button:focus {
+    opacity: 0.75;
+}
+
+
+/* Row with links to other components*/
+.navbar-2nd-row {
+    background-color: #fff;
+    display: flex;
+    font-size: 16px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1.5px solid #182745;
+    padding: 10px 0px 5px 0px;
+}
+
+.nav-links {
+    list-style-type: none;
+    padding: 0px;
+    display: flex;
+    margin: 0% 15% 0% 15%;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #182745;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.active {
+    font-weight: bold;
+}
+
+.active img {
+    padding-right: 5px;
+    width: 15px;
+    height: auto;
+}
+
+.sizedBox {
+    padding-top: 112px;
+}

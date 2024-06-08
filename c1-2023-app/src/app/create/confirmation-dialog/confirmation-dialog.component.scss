@@ -1,0 +1,64 @@
+.confirmation-dialog {
+    position: fixed;
+    width: 30%;
+    height: 15%;
+    margin-left: 40%;
+    bottom: 8%;
+    transform: translate(-50%, -50%);
+    background: #FFF;
+    border-radius: 1.25rem;
+    border: 1px solid #B3B3B3;
+
+}
+
+.confirmation-dialog p {
+    font-weight: bold;
+    /* Make paragraph text bold */
+}
+
+.dialog-content {
+    text-align: center;
+}
+
+.button-container {
+    margin-top: 20px;
+}
+
+/* Your existing CSS remains unchanged */
+
+.yes-button {
+    margin-right: 40px;
+    width: 7.6875rem;
+    height: 2.1875rem;
+    flex-shrink: 0;
+    border-radius: 1.25rem;
+    background: var(--Primary, #182745);
+    color: #FFF;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    border: 1px solid transparent;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.no-button {
+    width: 7.6875rem;
+    height: 2.1875rem;
+    flex-shrink: 0;
+    border-radius: 1.25rem;
+    background: #EBEBEB;
+    color: #000;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    border: 1px solid transparent;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}

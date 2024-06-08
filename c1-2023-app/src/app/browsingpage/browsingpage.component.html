@@ -1,0 +1,77 @@
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<div class="">
+    <div style="background-color: white;"><br>
+    <h2 id="pageHeader">Aktuella Förändringsarbeten</h2>
+        <div id="headerPosition">
+            <div class="headerItem">
+                <a class="header-link" (click)="toggleLine('discover')">Upptäck</a>
+                <img *ngIf="onDiscoverPage" src="assets/browsing/Tab-line.svg">
+            </div>
+            <div class="headerItem">
+                <a class="header-link" (click)="toggleLine('department')">Min Enhet</a>
+                <img *ngIf="!onDiscoverPage" src="assets/browsing/Tab-line.svg">
+            </div>
+        </div>
+    </div>
+    <div class="browsingBackground"><br>
+        <div *ngIf="onDiscoverPage">
+            <ng-container *ngFor="let card of cardList">
+                <app-card-item [card]="card" *ngIf="!card.archive"></app-card-item>
+            </ng-container>
+        </div> 
+  <div style="width: 100%; gap: 40px; display: inline-flex; justify-content: center;"*ngIf="!onDiscoverPage">
+            <div class="boardColumns columnMargin boardHeader">
+                <p style="text-align: center">Planera ({{planeraCards.length}})</p>
+            <ng-container *ngFor="let card of planeraCards">
+                <app-smallcard [card]="card"></app-smallcard>
+            </ng-container>
+            </div>
+            <div class="boardColumns columnMargin boardHeader">
+                <p style="text-align: center">Gör ({{gorCards.length}})</p>
+            <ng-container *ngFor="let card of gorCards">
+                <app-smallcard [card]="card"></app-smallcard>
+            </ng-container>
+            </div>
+            <div class="boardColumns columnMargin boardHeader">
+                <p style="text-align: center">Studera ({{studeraCards.length}})</p>
+            <ng-container *ngFor="let card of studeraCards">
+                <app-smallcard [card]="card"></app-smallcard>
+            </ng-container>
+            </div>
+            <div class="boardColumns columnMargin boardHeader">
+                <p style="text-align: center">Agera ({{ageraCards.length}})</p>
+            <ng-container *ngFor="let card of ageraCards">
+                <app-smallcard [card]="card"></app-smallcard>
+            </ng-container> 
+            </div>
+        </div>
+    </div>
+    <!--<div class="container">
+        <div class="column side">
+            <h3>Välj avdelning</h3>
+            <div id="dropdownChoseDepartmeantBrowsing">
+                <select name="choseDepartment" id="choseDepartment">
+                    <option value="AkutavdelningenUS">Akutavdelningen, Universitetssjukhuset</option>
+                    <option value="KirurgenUS">Kirurgen, Universitetssjukhuset</option>
+                    <option value="MödraravdelningenUS">Mödraravdelningen, Universitetssjukhuset</option>
+                </select>
+            </div>
+            <div class="row" id="filterBrowsing">
+                <h3 id="filterBrowsingText">Filtrera på</h3>
+                <img src="../../assets/icon_setting_4.png" alt="Filet icon">
+            </div>
+            <div class="filteContainer">
+                <mat-checkbox class="filterCheck" [(ngModel)]="nyaste">Nyast</mat-checkbox>
+                <mat-checkbox class="filterCheck" [(ngModel)]="prioriterat">Prioriterat</mat-checkbox>
+                <mat-checkbox class="filterCheck" [(ngModel)]="trendar">Trendar</mat-checkbox>
+            </div>
+        </div>
+        <div class="column middle">
+            <h3 id="midelLabel">Akutavdelningen, Universitetssjukhuset, Linköping</h3>
+            <div>
+                <app-card-item *ngFor="let card of cardList" [card]="card"></app-card-item>
+            </div>
+        </div>
+        <div class="column"></div>
+    </div>
+</div>-->

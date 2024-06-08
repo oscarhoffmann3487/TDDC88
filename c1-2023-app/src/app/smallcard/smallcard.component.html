@@ -1,0 +1,23 @@
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<div class="card-content" *ngIf="!card.archive">
+    <div class="top-row">
+        <div class="left-content">
+            <p class="title" class="inline-elements" (click)="openModal(card.title)">{{ card.title }}</p>
+        </div>
+        <div class="right-content">
+            <app-heart [number_of_likes]="card.numberOfLikes" [iw_id]="card.id"></app-heart>
+        </div>
+    </div>
+    <p class="description" (click)="openModal(card.title)">{{ card.description }}</p>
+    <div class="bottom-row">
+        <div class="left-content">
+            <img class="iwc-profile-circle inline-elements" src="assets/iwmodal/icon_profile_pic.png" />
+            <p class="inline-elements iwc-owner" (click)="openContact(card.owner)">{{ card.owner.first_name }} {{
+                card.owner.last_name }}</p>
+        </div>
+        <p style="margin: 0; font-size: 14px; font-weight: 400">{{ card.numberOfComments }}
+            <img class="iwc-comments-icon" (click)="openModal(card.title, true)"
+                src="assets/iwmodal/icon_comments.png" />
+        </p>
+    </div>
+</div>

@@ -1,0 +1,127 @@
+
+.activity-content{
+    width: 90%;
+    max-width: 750px;
+    margin: 0 auto;
+    border-radius: 20px;
+    background: #F8F8F8;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    flex-shrink: 0;
+}
+
+.header-title{
+    width: 75%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.title {
+    padding-top: 1%;
+    padding-left: 2%;
+    color: #000;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.prio-text{
+    font-family: Roboto;
+    font-style: italic;
+    font-size: 12px;
+    margin-left: 5%;
+}
+
+.close-activity{
+    padding-top: 1%;
+    padding-right: 2%;
+}
+
+.description {
+    padding-left: 2%;
+    color: #000;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.edit {
+    cursor: pointer;
+    padding-left: 95%;
+    padding-bottom: 1%;
+    color: #000;
+    font-family: Roboto;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.header-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2%;
+}
+
+.bottom-items {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 6%;
+    margin-left: 65%;
+    padding-bottom: 1%;
+}
+
+.icon {
+    padding-left: 5px;
+    padding-right: 10px;
+}
+
+.finished {
+    color: #000;
+    font-family: Roboto;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.checkbox {
+    padding-bottom: 1px;
+    width: 16px;
+    height: 15px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    margin-left: 10%;
+    border: 1px solid #000;
+    background: #F8F8F8;
+    fill: #F8F8F8;
+    cursor: pointer;
+}
+
+.fill-box {
+    fill: #000;
+}
+
+.if-finished {
+    background: rgba(248, 248, 248, 0.60);
+    opacity: 0.6;
+}
+
+.if-finished-edit {
+    opacity: 1;
+}
+
+.edit {
+    color: #000;
+    font-family: Roboto;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    display: flex;
+    opacity: 1;
+}

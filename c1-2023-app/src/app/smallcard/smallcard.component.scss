@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.inline-elements {
+    display: inline;
+}
+
+.iwc-profile-circle {
+    vertical-align: middle;
+    width: 18px;
+    height: auto;
+}
+
+
+
+.iwc-owner {
+    font-style: italic;
+    text-align: right;
+    font-weight: 400;
+    margin-left: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.card-content {
+    border-style: solid;
+    border-color: #D4D4D4;
+    border-width: -1px -1px -1px -1px;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: white;
+    transition-duration: .5s;
+}
+
+.card-content:hover {
+    cursor: pointer;
+    transform: translateX(-10px);
+    transition-duration: .2s;
+}
+
+.card-content:hover {
+    cursor: pointer;
+}
+
+.top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left-content {
+    flex: 1;
+}
+
+.right-content {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: bold;
+    margin: 0px;
+    padding: 0px;
+}
+
+#department {
+    font-family: Roboto;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-left: 5px;
+}
+
+#owner {
+    font-family: Roboto;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: right;
+    margin-left: 5px;
+}
+
+.description {
+    font-size: 12px;
+    font-weight: 400;
+    margin-block: 5px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.bottom-row {
+    display: flex;
+    align-items: space-between;
+}
+
+
+
+#likes {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0em;
+    margin: 0;
+    margin-right: 5px;
+}
+
+#comments {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0em;
+    margin: 0;
+    margin-right: 5px;
+}
+
+.icon-comments {
+    vertical-align: middle;
+    width: 20px;
+    height: auto;
+    margin-right: 5px;
+}
+
+.iwc-comments-icon {
+    vertical-align: middle;
+    width: 20px;
+    height: auto;
+    cursor: pointer;
+}
+
+.open-modal {
+    font-family: Roboto;
+    text-decoration: underline;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-top: 45px;
+    margin-left: 10px;
+}

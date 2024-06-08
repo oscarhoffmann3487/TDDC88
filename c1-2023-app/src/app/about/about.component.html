@@ -1,0 +1,83 @@
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<div class="parallax">
+    <div style="background-color: white;"><br>
+        <div id="headerPosition">
+            
+            <div class="headerItem">
+                <a class="header-link" (click)="toggleLine('activities')">Aktiviteter</a>
+                <img *ngIf="onActivities" src="../../assets/browsing/Tab-line.svg">
+            </div>
+            
+            <div class="headerItem">
+                <a class="header-link" (click)="toggleLine('myIW')">Mina förändringsarbeten</a>
+                <img *ngIf="onMyIW" src="../../assets/browsing/Tab-line.svg">
+            </div>
+            <div class="headerItem">
+                <a class="header-link" (click)="toggleLine('followedIW')">Följda förbättringsarbeten</a>
+                <img *ngIf="onFollowedIW" src="../../assets/browsing/Tab-line.svg">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="browsingBackground"><br>
+    <div *ngIf="onMyIW">
+        <ng-container *ngFor="let card of cardListMyIW">
+            <app-card-item [card]="card"></app-card-item>
+        </ng-container>
+    </div>
+</div>
+<div class="browsingBackground"><br>
+    <div *ngIf="onFollowedIW">
+        <ng-container *ngFor="let card of cardListFollowedIW">
+            <app-card-item [card]="card"></app-card-item>
+        </ng-container>
+    </div>
+</div>
+
+<div class="browsingBackground"><br>
+    <div *ngIf="onActivities" class="activity-size">
+        <div class="size-box">
+            <h2>Pågående</h2>
+            <ng-container *ngFor="let activity of activities ; index as i">
+                <app-activities 
+                    *ngIf="!activity.finished"
+                     [title]="activity.title" 
+                     [description]="activity.description" 
+                     [priority]="activity.priority" 
+                     [finished]="activity.finished"
+                     [canEdit]="false"
+                     (changeActivityStatusOutput)="edit(i)"
+                 ></app-activities>
+             </ng-container>
+             <h2>Avklarade</h2>
+             <ng-container *ngFor="let activity of activities; index as i">
+                <app-activities 
+                    *ngIf="activity.finished"
+                     [title]="activity.title" 
+                     [description]="activity.description" 
+                     [priority]="activity.priority" 
+                     [finished]="activity.finished"
+                     [canEdit]="false"
+                     (changeActivityStatusOutput)="edit(i)"
+                 ></app-activities>
+             </ng-container>
+        </div>
+    </div>
+</div>
+
+<div class="info_square">
+    <div style="margin-left: 5px; padding: 20px;">
+    <div id="profile-top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33" fill="none">
+        <path d="M16.5 0C11.9625 0 8.25 4.62 8.25 10.3125C8.25 16.005 11.9625 20.625 16.5 20.625C21.0375 20.625 24.75 16.005 24.75 10.3125C24.75 4.62 21.0375 0 16.5 0ZM7.87875 20.625C3.50625 20.8312 0 24.42 0 28.875V33H33V28.875C33 24.42 29.535 20.8312 25.1213 20.625C22.8938 23.1413 19.8412 24.75 16.5 24.75C13.1587 24.75 10.1062 23.1413 7.87875 20.625Z" fill="black"/>
+    </svg>
+    <div id="name-top">
+    <p class="info_square_name" >{{owner.first_name}} {{owner.last_name}}</p>
+    <p id="profession">{{owner.profession}}</p>
+    </div>
+</div>
+<p class="info_square_content" >{{owner.email}}</p>
+<p class="info_square_content" >{{owner.center_name}}</p>
+<p class="info_square_content">{{owner.unit_name}} {{owner.place_name}}</p>
+</div> 
+</div>

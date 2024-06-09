@@ -1,17 +1,57 @@
-## Getting started
+# TDDC88 - Software Engineering
 
-Install Node.js verison 18.18.0
-npm install -g @angular/cli
-cd/c1-2023-app run npm i
+## Overview
+This project was developed as part of the TDDC88 course at Linköping University. The course focused on software engineering practices, culminating in the development of a web application for Region Östergötland. The application aims to digitize improvement works, involving around 10 developers, along with management and designers. I served as the Integrator for this project.
 
-npm install jquery --save
-npm install @angular/material @angular/cdk
+## Table of Contents
+- [Stack](#stack)
+- [Preview](#preview)
+- [Getting Started](#getting-started)
+- [Setting Up the Database](#setting-up-the-database)
+- [Running Tests](#running-tests)
+- [Contribution Guidelines](#contribution-guidelines)
+- [License](#license)
+
+## Stack
+- **Frontend**: Angular
+- **Backend**: Python (Django)
+- **Database**: SQL
+- **Authentication**: Auth0
+- **Natural Language Processing**: rake-nltk (Python)
+
+We chose Angular for its powerful front-end capabilities and Django for its robust backend framework. SQL was selected for reliable data storage, while Auth0 provides secure authentication. rake-nltk helps with efficient keyword extraction for our search functionality.
+
+## Preview
+![Screenshot 1](imgs/login.png)
+*Start view*
+
+![Screenshot 2](imgs/myIWs.png)
+*IWs connected to profile*
+
+![Screenshot 3](imgs/new.png)
+*Create a new IW*
+
+![Screenshot 4](imgs/notify.png)
+*Notices*
+
+![Screenshot 5](imgs/review.png)
+*Open and read about IW*
+
+![Screenshot 6](imgs/search.png)
+*Search with keywords in Swedish and English*
+
+![Screenshot 7](imgs/unit.png)
+*Unit view*
+
+## Getting Started
+
+### Prerequisites
+- Node.js version 18.18.0
+- Angular CLI
+- Python (with pip)
+- Virtual Environment (venv)
+
 ## Start up project
-
-För att få upp angular:
-1. Starta ny terminal i VSC
-2. Gå till mappen "c1-2023-app"
-3. Skriv "ng serve"
 
 To start Django (restAPI):
 If you haven't created a virtual environment do that first
